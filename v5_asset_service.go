@@ -1,6 +1,7 @@
 package bybit
 
 import (
+	"encoding/json"
 	"strings"
 
 	"github.com/google/go-querystring/query"
@@ -411,12 +412,14 @@ type V5UniversalTransferResponse struct {
 func (s *V5AssetService) UniversalTransfer(param V5UniversalTransferParam) (*V5UniversalTransferResponse, error) {
 	var res V5UniversalTransferResponse
 
-	queryString, err := query.Values(param)
+	// Конвертируем параметры запроса в JSON
+	body, err := json.Marshal(param)
 	if err != nil {
 		return nil, err
 	}
 
-	if err := s.client.getV5Privately("/v5/asset/transfer/universal-transfer", queryString, &res); err != nil {
+	// Используем метод postV5JSON для отправки POST запроса
+	if err := s.client.postV5JSON("/v5/asset/transfer/universal-transfer", body, &res); err != nil {
 		return nil, err
 	}
 
