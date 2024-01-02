@@ -391,13 +391,13 @@ type V5GetAllCoinsBalanceBalance struct {
 
 // V5UniversalTransferParam defines the parameters for the universal transfer request
 type V5UniversalTransferParam struct {
-	TransferID      string `url:"transferId"`
-	Coin            string `url:"coin"`
-	Amount          string `url:"amount"`
-	FromMemberID    int    `url:"fromMemberId"`
-	ToMemberID      int    `url:"toMemberId"`
-	FromAccountType string `url:"fromAccountType"`
-	ToAccountType   string `url:"toAccountType"`
+	TransferID      string `json:"transferId"`
+	Coin            string `json:"coin"`
+	Amount          string `json:"amount"`
+	FromMemberID    int    `json:"fromMemberId"`
+	ToMemberID      int    `json:"toMemberId"`
+	FromAccountType string `json:"fromAccountType"`
+	ToAccountType   string `json:"toAccountType"`
 }
 
 // V5UniversalTransferResponse defines the response structure for the universal transfer request
