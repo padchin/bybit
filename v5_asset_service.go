@@ -387,6 +387,41 @@ type V5GetAllCoinsBalanceBalance struct {
 	Bonus           string `json:"bonus"`
 }
 
+// V5UniversalTransferParam defines the parameters for the universal transfer request
+type V5UniversalTransferParam struct {
+	TransferID      string `url:"transferId"`
+	Coin            string `url:"coin"`
+	Amount          string `url:"amount"`
+	FromMemberID    int    `url:"fromMemberId"`
+	ToMemberID      int    `url:"toMemberId"`
+	FromAccountType string `url:"fromAccountType"`
+	ToAccountType   string `url:"toAccountType"`
+}
+
+// V5UniversalTransferResponse defines the response structure for the universal transfer request
+type V5UniversalTransferResponse struct {
+	CommonV5Response `json:",inline"`
+	Result           struct {
+		TransferID string `json:"transferId"`
+	} `json:"result"`
+}
+
+// UniversalTransfer performs a transfer between sub-sub or main-sub accounts
+func (s *V5AssetService) UniversalTransfer(param V5UniversalTransferParam) (*V5UniversalTransferResponse, error) {
+	var res V5UniversalTransferResponse
+
+	queryString, err := query.Values(param)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := s.client.getV5Privately("/v5/asset/transfer/universal-transfer", queryString, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
 // GetAllCoinsBalance :
 // https://bybit-exchange.github.io/docs/v5/asset/all-balance
 func (s *V5AssetService) GetAllCoinsBalance(param V5GetAllCoinsBalanceParam) (*V5GetAllCoinsBalanceResponse, error) {
