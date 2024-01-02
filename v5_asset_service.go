@@ -15,6 +15,7 @@ type V5AssetServiceI interface {
 	GetWithdrawalRecords(V5GetWithdrawalRecordsParam) (*V5GetWithdrawalRecordsResponse, error)
 	GetCoinInfo(V5GetCoinInfoParam) (*V5GetCoinInfoResponse, error)
 	GetAllCoinsBalance(V5GetAllCoinsBalanceParam) (*V5GetAllCoinsBalanceResponse, error)
+	UniversalTransfer(param V5UniversalTransferParam) (*V5UniversalTransferResponse, error)
 }
 
 // V5AssetService :
