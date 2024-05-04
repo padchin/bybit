@@ -53,6 +53,7 @@ type V5CreateOrderParam struct {
 	SlLimitPrice          *string           `json:"slLimitPrice,omitempty"`
 	TpOrderType           *OrderType        `json:"tpOrderType,omitempty"`
 	SlOrderType           *OrderType        `json:"slOrderType,omitempty"`
+	MarketUnit            *string           `json:"marketUnit,omitempty"`
 }
 
 // V5CreateOrderResponse :
