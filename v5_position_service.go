@@ -84,6 +84,10 @@ type V5GetPositionInfoItem struct {
 	StopLoss               string           `json:"stopLoss"`
 	TradeMode              int              `json:"tradeMode"`
 	AutoAddMargin          int              `json:"autoAddMargin"`
+	Delta                  string           `json:"delta"` // Delta
+	Gamma                  string           `json:"gamma"` // Gamma
+	Vega                   string           `json:"vega"`  // Vega
+	Theta                  string           `json:"theta"` // Theta
 }
 
 // GetPositionInfo :
